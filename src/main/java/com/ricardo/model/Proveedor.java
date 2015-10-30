@@ -5,11 +5,14 @@
  */
 package com.ricardo.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,7 +33,18 @@ public class Proveedor{
     private String direccion;
     private String correo;
     private String estado;
+    //UN PROVEEDOR TIENE MUCHOS RECEPCIONES
+    @OneToMany(mappedBy = "proveedor")
+    private List<Recepcion> recepcion = new ArrayList<Recepcion>();
 
+    public List<Recepcion> getRecepcion() {
+        return recepcion;
+    }
+
+    public void setRecepcion(List<Recepcion> recepcion) {
+        this.recepcion = recepcion;
+    }
+    
     public Proveedor() {
     }
 
