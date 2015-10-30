@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -26,7 +27,7 @@ import javax.persistence.Table;
 public class Usuario {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "usuario_id")
     private int id;
     private String username;
@@ -74,7 +75,7 @@ public class Usuario {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    @ManyToMany(cascade=CascadeType.ALL)
+    @ManyToMany(cascade=CascadeType.PERSIST)
     @JoinTable(name = "Usuarios_Roles",
             joinColumns = {
                 @JoinColumn(name = "usuario_id")

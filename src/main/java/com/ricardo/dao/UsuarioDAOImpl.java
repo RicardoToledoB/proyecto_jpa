@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ricardo.dao;
 
 import com.ricardo.model.Rol;
@@ -19,74 +14,79 @@ import javax.persistence.TypedQuery;
  *
  * @author ricardo
  */
-public class UsuarioDAOImpl implements UsuarioDAO{
-    EntityManagerFactory emf=Persistence.createEntityManagerFactory("JPA-PU");
-        public void save(Usuario user) {
-		EntityManager em=null;
-		EntityTransaction tx=null;
-                try {
-			em = emf.createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-			em.persist(user);
-			tx.commit();
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
-	}
+public class UsuarioDAOImpl implements UsuarioDAO {
 
-	public void delete(Usuario user) {
-		EntityManager em=null;
-		EntityTransaction tx=null;
-		
-		try {
-			em = emf.createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-			em.remove(user);
-			tx.commit();
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
-	}
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
 
-	
-	public List<Usuario> findAll() {
-		EntityManager em=null;
-		List<Usuario> usuarios = new ArrayList<Usuario>();
-                try {
-			em = emf.createEntityManager();
-			TypedQuery<Usuario> query = (TypedQuery<Usuario>) em.createQuery("SELECT r FROM Usuario r");
-			usuarios = query.getResultList();
-                        return usuarios;
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			em.close();
-		}
-                return null;
-	}
+    public void save(Usuario user) {
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.persist(user);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
 
-	
-	public void edit(Usuario user) {
-		EntityManager em=null;
-		EntityTransaction tx=null;
-		
-		try {
-			em = emf.createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-			em.merge(user);
-			tx.commit();
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-                   
-                    em.close();
-		}
-	}
+    public void delete(Usuario user) {
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.remove(user);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Usuario> findAll() {
+        EntityManager em = null;
+        List<Usuario> usuarios = new ArrayList<Usuario>();
+        try {
+            em = emf.createEntityManager();
+            TypedQuery<Usuario> query = (TypedQuery<Usuario>) em.createQuery("SELECT r FROM Usuario r");
+            usuarios = query.getResultList();
+            return usuarios;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return null;
+    }
+
+    public Usuario findById(int id) {
+        EntityManager em = emf.createEntityManager();
+        return em.find(Usuario.class, id);
+    }
+
+    public void edit(Usuario user) {
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.merge(user);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            em.close();
+        }
+    }
 }
