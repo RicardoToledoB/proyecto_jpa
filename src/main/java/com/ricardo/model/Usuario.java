@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -25,7 +26,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Usuarios")
 public class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "usuario_id")
@@ -75,7 +75,7 @@ public class Usuario {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    @ManyToMany(cascade=CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "Usuarios_Roles",
             joinColumns = {
                 @JoinColumn(name = "usuario_id")
@@ -92,5 +92,5 @@ public class Usuario {
     public void setRoles(List<Rol> roles) {
         this.roles = roles;
     }
-    
+
 }
