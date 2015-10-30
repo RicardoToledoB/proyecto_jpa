@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -92,5 +93,16 @@ public class Usuario {
     public void setRoles(List<Rol> roles) {
         this.roles = roles;
     }
+    //UN Usuario TIENE MUCHOS Recepciones
+    @OneToMany(mappedBy = "usuario")
+    private List<Recepcion> recepcion = new ArrayList<Recepcion>();
 
+    public List<Recepcion> getRecepcion() {
+        return recepcion;
+    }
+
+    public void setRecepcion(List<Recepcion> recepcion) {
+        this.recepcion = recepcion;
+    }
+    
 }
