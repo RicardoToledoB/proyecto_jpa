@@ -6,32 +6,91 @@
 package com.ricardo.dao;
 
 import com.ricardo.model.Rechazo;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
  * @author ricardo
  */
 public class RechazoDAOImpl implements RechazoDAO {
+     EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
 
-    @Override
     public void save(Rechazo rechazo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.persist(rechazo);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public void delete(Rechazo rechazo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.remove(rechazo);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public List<Rechazo> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        List<Rechazo> rechazos = new ArrayList<Rechazo>();
+        try {
+            em = emf.createEntityManager();
+            TypedQuery<Rechazo> query = (TypedQuery<Rechazo>) em.createQuery("SELECT r FROM Rechazo r");
+            rechazos = query.getResultList();
+            return rechazos;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return null;
     }
 
-    @Override
+    public Rechazo findById(int id) {
+        EntityManager em = emf.createEntityManager();
+        return em.find(Rechazo.class, id);
+    }
+
     public void edit(Rechazo rechazo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.merge(rechazo);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            em.close();
+        }
     }
     
 }

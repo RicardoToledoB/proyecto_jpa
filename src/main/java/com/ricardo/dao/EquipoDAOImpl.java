@@ -1,12 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ricardo.dao;
 
 import com.ricardo.model.Equipo;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -14,24 +15,78 @@ import java.util.List;
  */
 public class EquipoDAOImpl implements EquipoDAO{
 
-    @Override
+     EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
+
     public void save(Equipo equipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.persist(equipo);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public void delete(Equipo equipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.remove(equipo);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public List<Equipo> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        List<Equipo> equipos = new ArrayList<Equipo>();
+        try {
+            em = emf.createEntityManager();
+            TypedQuery<Equipo> query = (TypedQuery<Equipo>) em.createQuery("SELECT r FROM Equipo r");
+            equipos = query.getResultList();
+            return equipos;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return null;
     }
 
-    @Override
+    public Equipo findById(int id) {
+        EntityManager em = emf.createEntityManager();
+        return em.find(Equipo.class, id);
+    }
+
     public void edit(Equipo equipo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.merge(equipo);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            em.close();
+        }
     }
     
 }

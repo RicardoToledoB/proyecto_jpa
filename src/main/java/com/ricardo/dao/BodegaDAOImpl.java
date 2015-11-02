@@ -6,7 +6,13 @@
 package com.ricardo.dao;
 
 import com.ricardo.model.Bodega;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -14,24 +20,78 @@ import java.util.List;
  */
 public class BodegaDAOImpl implements BodegaDAO{
 
-    @Override
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
+
     public void save(Bodega bodega) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.persist(bodega);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public void delete(Bodega bodega) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.remove(bodega);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public List<Bodega> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        List<Bodega> bodegas = new ArrayList<Bodega>();
+        try {
+            em = emf.createEntityManager();
+            TypedQuery<Bodega> query = (TypedQuery<Bodega>) em.createQuery("SELECT r FROM Bodega r");
+            bodegas = query.getResultList();
+            return bodegas;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return null;
     }
 
-    @Override
+    public Bodega findById(int id) {
+        EntityManager em = emf.createEntityManager();
+        return em.find(Bodega.class, id);
+    }
+
     public void edit(Bodega bodega) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.merge(bodega);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            em.close();
+        }
     }
     
 }

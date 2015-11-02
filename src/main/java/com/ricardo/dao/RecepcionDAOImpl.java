@@ -1,37 +1,91 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ricardo.dao;
 
 import com.ricardo.model.Recepcion;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
  * @author ricardo
  */
 public class RecepcionDAOImpl implements RecepcionDAO{
+     EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
 
-    @Override
     public void save(Recepcion recepcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.persist(recepcion);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public void delete(Recepcion recepcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.remove(recepcion);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public List<Recepcion> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        List<Recepcion> recepciones = new ArrayList<Recepcion>();
+        try {
+            em = emf.createEntityManager();
+            TypedQuery<Recepcion> query = (TypedQuery<Recepcion>) em.createQuery("SELECT r FROM Recepcion r");
+            recepciones = query.getResultList();
+            return recepciones;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return null;
     }
 
-    @Override
+    public Recepcion findById(int id) {
+        EntityManager em = emf.createEntityManager();
+        return em.find(Recepcion.class, id);
+    }
+
     public void edit(Recepcion recepcion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.merge(recepcion);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            em.close();
+        }
     }
     
 }

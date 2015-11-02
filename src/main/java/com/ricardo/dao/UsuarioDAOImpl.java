@@ -1,6 +1,5 @@
 package com.ricardo.dao;
 
-import com.ricardo.model.Rol;
 import com.ricardo.model.Usuario;
 import java.util.ArrayList;
 import java.util.List;

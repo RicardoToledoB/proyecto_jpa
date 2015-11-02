@@ -6,7 +6,14 @@
 package com.ricardo.dao;
 
 import com.ricardo.model.Devolucion;
+import com.ricardo.model.Usuario;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -14,24 +21,78 @@ import java.util.List;
  */
 public class DevolucionDAOImpl implements DevolucionDAO{
 
-    @Override
+     EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA-PU");
+
     public void save(Devolucion devolucion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.persist(devolucion);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public void delete(Devolucion devolucion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.remove(devolucion);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
 
-    @Override
     public List<Devolucion> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        List<Devolucion> devoluciones = new ArrayList<Devolucion>();
+        try {
+            em = emf.createEntityManager();
+            TypedQuery<Devolucion> query = (TypedQuery<Devolucion>) em.createQuery("SELECT r FROM Devolucion r");
+            devoluciones = query.getResultList();
+            return devoluciones;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return null;
     }
 
-    @Override
+    public Usuario findById(int id) {
+        EntityManager em = emf.createEntityManager();
+        return em.find(Usuario.class, id);
+    }
+
     public void edit(Devolucion devolucion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        EntityTransaction tx = null;
+
+        try {
+            em = emf.createEntityManager();
+            tx = em.getTransaction();
+            tx.begin();
+            em.merge(devolucion);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            em.close();
+        }
     }
     
 }
