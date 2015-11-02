@@ -104,5 +104,42 @@ public class Usuario {
     public void setRecepcion(List<Recepcion> recepcion) {
         this.recepcion = recepcion;
     }
+    //UN Usuario TIENE MUCHOS Rechazos
+    @OneToMany(mappedBy = "usuario")
+    private List<Rechazo> rechazos = new ArrayList<Rechazo>();
+
+    public List<Rechazo> getRechazos() {
+        return rechazos;
+    }
+
+    public void setRechazos(List<Rechazo> rechazos) {
+        this.rechazos = rechazos;
+    }
+    
+     //UN Usuario TIENE MUCHOS Aprobados
+    @OneToMany(mappedBy = "usuario")
+    private List<Aprobado> aprobados = new ArrayList<Aprobado>();
+
+    public List<Aprobado> getAprobados() {
+        return aprobados;
+    }
+
+    public void setAprobados(List<Aprobado> aprobados) {
+        this.aprobados = aprobados;
+    }
+    
+     //UN Usuario TIENE MUCHOS Devoluciones
+    @OneToMany(mappedBy = "usuario")
+    private List<Devolucion> devoluciones = new ArrayList<Devolucion>();
+
+    public List<Devolucion> getDevoluciones() {
+        return devoluciones;
+    }
+
+    public void setDevoluciones(List<Devolucion> devoluciones) {
+        this.devoluciones = devoluciones;
+    }
+    
+    
     
 }
