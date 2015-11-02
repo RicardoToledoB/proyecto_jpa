@@ -1,5 +1,4 @@
 package com.ricardo.dao;
-
 import com.ricardo.model.Aprobado;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +7,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
 /**
  *
  * @author ricardo
