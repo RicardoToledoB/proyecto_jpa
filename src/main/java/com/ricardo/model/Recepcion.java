@@ -17,6 +17,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import static javax.persistence.TemporalType.DATE;
 
 /**
  *
@@ -30,6 +33,7 @@ public class Recepcion {
     @Column(name = "recepcion_id")
     private int id;
     private String numerodocumento;
+    @Temporal(TemporalType.DATE)
     private Date fecharecepcion;
     private String tipodocumento;
     private String observacion;

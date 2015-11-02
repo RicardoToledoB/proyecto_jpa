@@ -17,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,6 +31,7 @@ public class Solicitud {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "solicitud_id")
     private int id;
+    @Temporal(TemporalType.DATE)
     private Date fechasolicitud;
     private String sim;
     private String sstm;

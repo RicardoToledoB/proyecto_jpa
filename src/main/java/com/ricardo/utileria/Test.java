@@ -13,7 +13,7 @@ public class Test {
     public static void main(String[] args){
         
         Usuario user=new Usuario();
-        user.setUsername("PETER");
+        user.setUsername("LLALALAL");
         user.setPassword("123456");
         user.setEstado("ACTIVO");
         UsuarioDAOImpl uDAO=new UsuarioDAOImpl();

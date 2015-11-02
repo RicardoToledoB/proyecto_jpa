@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -26,6 +28,7 @@ public class Rechazo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "rechazo_id")
     private int id;
+    @Temporal(TemporalType.DATE)
     private Date fecharechazo;
     private String observacion;
     private String estado;
