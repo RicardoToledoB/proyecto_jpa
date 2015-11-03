@@ -124,6 +124,16 @@ public class Recepcion {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+    /*@ManyToOne
+    @JoinColumn(name="recepciondetalle_id")
+    private RecepcionDetalle recepciondetalle;
+
+    public RecepcionDetalle getRecepciondetalle() {
+        return recepciondetalle;
+    }
+
+    public void setRecepciondetalle(RecepcionDetalle recepciondetalle) {
+        this.recepciondetalle = recepciondetalle;
+    }*/
     
 }

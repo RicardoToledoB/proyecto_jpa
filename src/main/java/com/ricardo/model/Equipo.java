@@ -1,5 +1,7 @@
 package com.ricardo.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 /**
  *
@@ -50,7 +53,7 @@ public class Equipo {
         this.bodega = bodega;
     }
     //MUCHOS EQUIPOS TIENE UN SOLO RECEPCION
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name="recepcion_id")
     private Recepcion recepcion;
 
@@ -61,7 +64,7 @@ public class Equipo {
     public void setRecepcion(Recepcion recepcion) {
         this.recepcion = recepcion;
     }
-
+*/
     public Equipo() {
     }
 
@@ -121,5 +124,18 @@ public class Equipo {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+   
+    /*@ManyToOne
+    @JoinColumn(name="recepciondetalle_id")
+    private RecepcionDetalle recepciondetalle;
+
+    public RecepcionDetalle getRecepciondetalle() {
+        return recepciondetalle;
+    }
+
+    public void setRecepciondetalle(RecepcionDetalle recepciondetalle) {
+        this.recepciondetalle = recepciondetalle;
+    }*/
     
+
 }

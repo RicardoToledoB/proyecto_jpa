@@ -5,18 +5,21 @@
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <!--DEFINIR CONEXION CON BASE DE DATOS -->
-            <property name="eclipselink.ddl-generation" value="create-tables" />
+           <!-- <property name="eclipselink.ddl-generation" value="create-tables" />-->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/proyecto_jpa"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <!-- VER LOG ECLIPSELINK -->
-            <!--<property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <!-- ELIMINAR Y CREA TABLAS DE MANERA AUTOMATICA -->
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
             <property name="javax.persistence.schema-generation.scripts.create-target" value="create.ddl"/>
-            <property name="javax.persistence.schema-generation.scripts.drop-target" value="drop.ddl"/>-->
+            <property name="javax.persistence.schema-generation.scripts.drop-target" value="drop.ddl"/>
             
+            <!--CARGAR SCRIPT SQL PARA LLENADO DE TABLAS -->
+            <property name="javax.persistence.sql-load-script-source" value="META-INF/Test.sql"/>
             
         </properties>
         
