@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="proyecto_jpa" type="javax.sql.DataSource">#Tue Nov 03 01:24:10 CLT 2015
+jdbcDriver=com.mysql.jdbc.Driver
+password=
+userName=root
+jdbcUrl=jdbc\:mysql\://localhost\:3306/proyecto_jpa?zeroDateTimeBehavior\=convertToNull
+</Resource>
+</resources>

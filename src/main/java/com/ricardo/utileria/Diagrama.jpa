@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings theme="METRO" jaxb-support="false" id="_14465240699839" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:ns4="http://nbmodeler.java.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Aprobado" visibile="true" minimized="false" id="_144652407001712">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407001715">
+                <jpa:column name="aprobado_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="aprobado_id"/>
+            </jpa:id>
+            <jpa:basic name="fechaaprobacion" attribute-type="java.util.Date" visibile="true" id="_144652407001816">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="observacion" attribute-type="String" visibile="true" id="_144652407001817"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407001818"/>
+            <jpa:many-to-one name="usuario" target-entity="Usuario" primaryKey="false" connected-entity-id="_1446524070253134" connected-attribute-id="_1446524070254142" visibile="true" id="_144652407001713">
+                <jpa:join-column name="usuario_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="solicitud" target-entity="Solicitud" primaryKey="false" connected-entity-id="_1446524070187113" connected-attribute-id="_1446524070188126" visibile="true" id="_144652407001714">
+                <jpa:join-column name="solicitud_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="devoluciones" target-entity="Devolucion" mapped-by="aprobado" collection-type="java.util.List" connected-entity-id="_144652407006436" connected-attribute-id="_144652407006438" visibile="true" id="_144652407001819"/>
+        </jpa:attributes>
+        <jpa:table name="Aprobados"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Bodega" visibile="true" minimized="false" id="_144652407003020">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407003022">
+                <jpa:column name="bodega_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="bodega_id"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" visibile="true" id="_144652407003023"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407003024"/>
+            <jpa:one-to-many name="equipo" target-entity="Equipo" mapped-by="bodega" collection-type="java.util.List" connected-entity-id="_144652407007243" connected-attribute-id="_144652407007245" visibile="true" id="_144652407003021"/>
+        </jpa:attributes>
+        <jpa:table name="Bodegas"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Cliente" visibile="true" minimized="false" id="_144652407004425">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407004427">
+                <jpa:column name="cliente_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="cliente_id"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" visibile="true" id="_144652407004528"/>
+            <jpa:basic name="apepat" attribute-type="String" visibile="true" id="_144652407004529"/>
+            <jpa:basic name="telefono" attribute-type="String" visibile="true" id="_144652407004530"/>
+            <jpa:basic name="celular" attribute-type="String" visibile="true" id="_144652407004531"/>
+            <jpa:basic name="correo" attribute-type="String" visibile="true" id="_144652407004532"/>
+            <jpa:basic name="direccion" attribute-type="String" visibile="true" id="_144652407004533"/>
+            <jpa:basic name="rut" attribute-type="String" visibile="true" id="_144652407004534"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407004535"/>
+            <jpa:one-to-many name="solicitudes" target-entity="Solicitud" mapped-by="cliente" collection-type="java.util.List" connected-entity-id="_1446524070187113" connected-attribute-id="_1446524070188117" visibile="true" id="_144652407004426"/>
+        </jpa:attributes>
+        <jpa:table name="Clientes"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Devolucion" visibile="true" minimized="false" id="_144652407006436">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407006439">
+                <jpa:column name="devolucion_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="devolucion_id"/>
+            </jpa:id>
+            <jpa:basic name="fechadevolucion" attribute-type="java.util.Date" visibile="true" id="_144652407006440">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="observacion" attribute-type="String" visibile="true" id="_144652407006441"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407006442"/>
+            <jpa:many-to-one name="usuario" target-entity="Usuario" primaryKey="false" connected-entity-id="_1446524070253134" connected-attribute-id="_1446524070254143" visibile="true" id="_144652407006437">
+                <jpa:join-column name="usuario_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="aprobado" target-entity="Aprobado" primaryKey="false" connected-entity-id="_144652407001712" connected-attribute-id="_144652407001819" visibile="true" id="_144652407006438">
+                <jpa:join-column name="aprobado_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="Devoluciones"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Equipo" visibile="true" minimized="false" id="_144652407007243">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407007246">
+                <jpa:column name="equipo_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="equipo_id"/>
+            </jpa:id>
+            <jpa:basic name="imei" attribute-type="String" visibile="true" id="_144652407007247"/>
+            <jpa:basic name="codigosap" attribute-type="String" visibile="true" id="_144652407007248"/>
+            <jpa:basic name="tipoingreso" attribute-type="String" visibile="true" id="_144652407007249"/>
+            <jpa:basic name="observacion" attribute-type="String" visibile="true" id="_144652407007250"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407007251"/>
+            <jpa:many-to-one name="modelo" target-entity="Modelo" primaryKey="false" connected-entity-id="_144652407011165" visibile="true" id="_144652407007244">
+                <jpa:join-column name="modelo_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="bodega" target-entity="Bodega" primaryKey="false" connected-entity-id="_144652407003020" connected-attribute-id="_144652407003021" visibile="true" id="_144652407007245">
+                <jpa:join-column name="bodega_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="Equipos"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Marca" visibile="true" minimized="false" id="_144652407008552">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407008554">
+                <jpa:column name="marca_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="marca_id"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" visibile="true" id="_144652407008555"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407008556"/>
+            <jpa:one-to-many name="modelo" target-entity="Modelo" mapped-by="marca" collection-type="java.util.List" connected-entity-id="_144652407011165" connected-attribute-id="_144652407011266" visibile="true" id="_144652407008553"/>
+        </jpa:attributes>
+        <jpa:table name="Marcas"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Menu" visibile="true" minimized="false" id="_144652407009757">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407009759">
+                <jpa:column name="menu_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="menu_id"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" visibile="true" id="_144652407009760"/>
+            <jpa:basic name="icon" attribute-type="String" visibile="true" id="_144652407009761"/>
+            <jpa:basic name="url" attribute-type="String" visibile="true" id="_144652407009762"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407009763"/>
+            <jpa:one-to-many name="submenu" target-entity="SubMenu" mapped-by="menu" collection-type="java.util.List" connected-entity-id="_1446524070202127" connected-attribute-id="_1446524070202128" visibile="true" id="_144652407009758"/>
+            <jpa:many-to-many name="roles" target-entity="Rol" mapped-by="menus" collection-type="java.util.List" connected-entity-id="_1446524070175107" connected-attribute-id="_1446524070175112" visibile="true" id="_144652407009764"/>
+        </jpa:attributes>
+        <jpa:table name="Menus"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Modelo" visibile="true" minimized="false" id="_144652407011165">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407011267">
+                <jpa:column name="modelo_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="modelo_id"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" visibile="true" id="_144652407011268"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407011269"/>
+            <jpa:many-to-one name="marca" target-entity="Marca" primaryKey="false" connected-entity-id="_144652407008552" connected-attribute-id="_144652407008553" visibile="true" id="_144652407011266">
+                <jpa:join-column name="marca_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="Modelos"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Plan" visibile="true" minimized="false" id="_144652407012170">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407012172">
+                <jpa:column name="plan_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="plan_id"/>
+            </jpa:id>
+            <jpa:basic name="tipo" attribute-type="String" visibile="true" id="_144652407012173"/>
+            <jpa:basic name="monto" attribute-type="String" visibile="true" id="_144652407012174"/>
+            <jpa:basic name="observacion" attribute-type="String" visibile="true" id="_144652407012175"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407012176"/>
+            <jpa:one-to-many name="solicitudes" target-entity="Solicitud" mapped-by="plan" collection-type="java.util.List" connected-entity-id="_1446524070187113" connected-attribute-id="_1446524070187115" visibile="true" id="_144652407012171"/>
+        </jpa:attributes>
+        <jpa:table name="Planes"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Proveedor" visibile="true" minimized="false" id="_144652407013277">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407013279">
+                <jpa:column name="proveedor_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="proveedor_id"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" visibile="true" id="_144652407013280"/>
+            <jpa:basic name="rut" attribute-type="String" visibile="true" id="_144652407013281"/>
+            <jpa:basic name="telefono" attribute-type="String" visibile="true" id="_144652407013282"/>
+            <jpa:basic name="celular" attribute-type="String" visibile="true" id="_144652407013283"/>
+            <jpa:basic name="direccion" attribute-type="String" visibile="true" id="_144652407013284"/>
+            <jpa:basic name="correo" attribute-type="String" visibile="true" id="_144652407013285"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407013286"/>
+            <jpa:one-to-many name="recepcion" target-entity="Recepcion" mapped-by="proveedor" collection-type="java.util.List" connected-entity-id="_144652407014387" connected-attribute-id="_144652407014388" visibile="true" id="_144652407013278"/>
+        </jpa:attributes>
+        <jpa:table name="Proveedores"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Recepcion" visibile="true" minimized="false" id="_144652407014387">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407014390">
+                <jpa:column name="recepcion_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="recepcion_id"/>
+            </jpa:id>
+            <jpa:basic name="numerodocumento" attribute-type="String" visibile="true" id="_144652407014391"/>
+            <jpa:basic name="fecharecepcion" attribute-type="java.util.Date" visibile="true" id="_144652407014392">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="tipodocumento" attribute-type="String" visibile="true" id="_144652407014393"/>
+            <jpa:basic name="observacion" attribute-type="String" visibile="true" id="_144652407014394"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_144652407014395"/>
+            <jpa:many-to-one name="proveedor" target-entity="Proveedor" primaryKey="false" connected-entity-id="_144652407013277" connected-attribute-id="_144652407013278" visibile="true" id="_144652407014388">
+                <jpa:join-column name="proveedor_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="usuario" target-entity="Usuario" primaryKey="false" connected-entity-id="_1446524070253134" connected-attribute-id="_1446524070254140" visibile="true" id="_144652407014389">
+                <jpa:join-column name="usuario_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="Recepciones"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="RecepcionDetalle" visibile="true" minimized="false" id="_144652407015796">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_144652407015799">
+                <jpa:column name="recepciondetalle_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="recepciondetalle_id"/>
+            </jpa:id>
+            <jpa:many-to-one name="recepcion" target-entity="Recepcion" primaryKey="false" connected-entity-id="_144652407014387" visibile="true" id="_144652407015797">
+                <jpa:join-column name="recepcion_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="equipo" target-entity="Equipo" primaryKey="false" connected-entity-id="_144652407007243" visibile="true" id="_144652407015798">
+                <jpa:join-column name="equipo_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:join-table/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="RecepcionesDetalles"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Rechazo" visibile="true" minimized="false" id="_1446524070166100">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_1446524070166103">
+                <jpa:column name="rechazo_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="rechazo_id"/>
+            </jpa:id>
+            <jpa:basic name="fecharechazo" attribute-type="java.util.Date" visibile="true" id="_1446524070166104">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="observacion" attribute-type="String" visibile="true" id="_1446524070166105"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_1446524070166106"/>
+            <jpa:many-to-one name="usuario" target-entity="Usuario" primaryKey="false" connected-entity-id="_1446524070253134" connected-attribute-id="_1446524070254141" visibile="true" id="_1446524070166101">
+                <jpa:join-column name="usuario_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="solicitud" target-entity="Solicitud" primaryKey="false" connected-entity-id="_1446524070187113" connected-attribute-id="_1446524070188125" visibile="true" id="_1446524070166102">
+                <jpa:join-column name="solicitud_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="Rechazos"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Rol" visibile="true" minimized="false" id="_1446524070175107">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_1446524070175108">
+                <jpa:column name="rol_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="rol_id"/>
+            </jpa:id>
+            <jpa:basic name="tipo" attribute-type="String" visibile="true" id="_1446524070175109"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_1446524070175110"/>
+            <jpa:many-to-many name="usuarios" target-entity="Usuario" mapped-by="roles" collection-type="java.util.List" connected-entity-id="_1446524070253134" connected-attribute-id="_1446524070253139" visibile="true" id="_1446524070175111"/>
+            <jpa:many-to-many name="menus" target-entity="Menu" collection-type="java.util.List" connected-entity-id="_144652407009757" connected-attribute-id="_144652407009764" visibile="true" id="_1446524070175112">
+                <jpa:join-table name="Roles_Menus">
+                    <jpa:join-column name="rol_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                    <jpa:inverse-join-column name="menu_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </jpa:join-table>
+                <jpa:cascade>
+                    <jpa:cascade-persist/>
+                </jpa:cascade>
+            </jpa:many-to-many>
+        </jpa:attributes>
+        <jpa:table name="Roles"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Solicitud" visibile="true" minimized="false" id="_1446524070187113">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_1446524070188118">
+                <jpa:column name="solicitud_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="solicitud_id"/>
+            </jpa:id>
+            <jpa:basic name="fechasolicitud" attribute-type="java.util.Date" visibile="true" id="_1446524070188119">
+                <jpa:temporal>DATE</jpa:temporal>
+            </jpa:basic>
+            <jpa:basic name="sim" attribute-type="String" visibile="true" id="_1446524070188120"/>
+            <jpa:basic name="sstm" attribute-type="String" visibile="true" id="_1446524070188121"/>
+            <jpa:basic name="pcs" attribute-type="String" visibile="true" id="_1446524070188122"/>
+            <jpa:basic name="observacion" attribute-type="String" visibile="true" id="_1446524070188123"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_1446524070188124"/>
+            <jpa:many-to-one name="equipo" target-entity="Equipo" primaryKey="false" connected-entity-id="_144652407007243" visibile="true" id="_1446524070187114">
+                <jpa:join-column name="equipo_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="plan" target-entity="Plan" primaryKey="false" connected-entity-id="_144652407012170" connected-attribute-id="_144652407012171" visibile="true" id="_1446524070187115">
+                <jpa:join-column name="plan_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="usuario" target-entity="Usuario" primaryKey="false" connected-entity-id="_1446524070253134" visibile="true" id="_1446524070187116">
+                <jpa:join-column name="usuario_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:many-to-one name="cliente" target-entity="Cliente" primaryKey="false" connected-entity-id="_144652407004425" connected-attribute-id="_144652407004426" visibile="true" id="_1446524070188117">
+                <jpa:join-column name="cliente_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+            <jpa:one-to-many name="rechazos" target-entity="Rechazo" mapped-by="solicitud" collection-type="java.util.List" connected-entity-id="_1446524070166100" connected-attribute-id="_1446524070166102" visibile="true" id="_1446524070188125"/>
+            <jpa:one-to-many name="aprobados" target-entity="Aprobado" mapped-by="solicitud" collection-type="java.util.List" connected-entity-id="_144652407001712" connected-attribute-id="_144652407001714" visibile="true" id="_1446524070188126"/>
+        </jpa:attributes>
+        <jpa:table name="Solicitudes"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="SubMenu" visibile="true" minimized="false" id="_1446524070202127">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_1446524070202129">
+                <jpa:column name="submenu_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="submenu_id"/>
+            </jpa:id>
+            <jpa:basic name="nombre" attribute-type="String" visibile="true" id="_1446524070202130"/>
+            <jpa:basic name="icon" attribute-type="String" visibile="true" id="_1446524070202131"/>
+            <jpa:basic name="url" attribute-type="String" visibile="true" id="_1446524070202132"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_1446524070202133"/>
+            <jpa:many-to-one name="menu" target-entity="Menu" primaryKey="false" connected-entity-id="_144652407009757" connected-attribute-id="_144652407009758" visibile="true" id="_1446524070202128">
+                <jpa:join-column name="menu_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:many-to-one>
+        </jpa:attributes>
+        <jpa:table name="SubMenus"/>
+    </jpa:entity>
+    <jpa:entity jaxb-root-element="false" compositePrimaryKeyType="NONE" static-metamodel="false" abstract="false" class="Usuario" visibile="true" minimized="false" id="_1446524070253134">
+        <jpa:attributes>
+            <jpa:id name="id" attribute-type="int" visibile="true" id="_1446524070253135">
+                <jpa:column name="usuario_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:generated-value strategy="AUTO"/>
+                <jpa:sequence-generator name="usuario_id"/>
+            </jpa:id>
+            <jpa:basic name="username" attribute-type="String" visibile="true" id="_1446524070253136"/>
+            <jpa:basic name="password" attribute-type="String" visibile="true" id="_1446524070253137"/>
+            <jpa:basic name="estado" attribute-type="String" visibile="true" id="_1446524070253138"/>
+            <jpa:one-to-many name="recepcion" target-entity="Recepcion" mapped-by="usuario" collection-type="java.util.List" connected-entity-id="_144652407014387" connected-attribute-id="_144652407014389" visibile="true" id="_1446524070254140"/>
+            <jpa:one-to-many name="rechazos" target-entity="Rechazo" mapped-by="usuario" collection-type="java.util.List" connected-entity-id="_1446524070166100" connected-attribute-id="_1446524070166101" visibile="true" id="_1446524070254141"/>
+            <jpa:one-to-many name="aprobados" target-entity="Aprobado" mapped-by="usuario" collection-type="java.util.List" connected-entity-id="_144652407001712" connected-attribute-id="_144652407001713" visibile="true" id="_1446524070254142"/>
+            <jpa:one-to-many name="devoluciones" target-entity="Devolucion" mapped-by="usuario" collection-type="java.util.List" connected-entity-id="_144652407006436" connected-attribute-id="_144652407006437" visibile="true" id="_1446524070254143"/>
+            <jpa:many-to-many name="roles" target-entity="Rol" collection-type="java.util.List" connected-entity-id="_1446524070175107" connected-attribute-id="_1446524070175111" visibile="true" id="_1446524070253139">
+                <jpa:join-table name="Usuarios_Roles">
+                    <jpa:join-column name="usuario_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                    <jpa:inverse-join-column name="rol_id" unique="false" nullable="true" insertable="true" updatable="true"/>
+                </jpa:join-table>
+                <jpa:cascade>
+                    <jpa:cascade-persist/>
+                </jpa:cascade>
+            </jpa:many-to-many>
+        </jpa:attributes>
+        <jpa:table name="Usuarios"/>
+    </jpa:entity>
+    <jpa:diagram id="_144652406998410">
+        <plane elementRef="_14465240699839" id="_144652406998411_p">
+            <shape elementRef="_144652407001712" id="_144652407001712_gui">
+                <Bounds x="452.0" y="523.0" width="153.0" height="201.0"/>
+            </shape>
+            <shape elementRef="_144652407003020" id="_144652407003020_gui">
+                <Bounds x="-162.0" y="447.0" width="138.0" height="141.0"/>
+            </shape>
+            <shape elementRef="_144652407004425" id="_144652407004425_gui">
+                <Bounds x="933.0" y="282.0" width="136.0" height="261.0"/>
+            </shape>
+            <shape elementRef="_144652407006436" id="_144652407006436_gui">
+                <Bounds x="920.0" y="555.0" width="162.0" height="181.0"/>
+            </shape>
+            <shape elementRef="_144652407007243" id="_144652407007243_gui">
+                <Bounds x="12.0" y="12.0" width="135.0" height="221.0"/>
+            </shape>
+            <shape elementRef="_144652407008552" id="_144652407008552_gui">
+                <Bounds x="-135.0" y="12.0" width="128.0" height="141.0"/>
+            </shape>
+            <shape elementRef="_144652407009757" id="_144652407009757_gui">
+                <Bounds x="1189.0" y="12.0" width="128.0" height="201.0"/>
+            </shape>
+            <shape elementRef="_144652407011165" id="_144652407011165_gui">
+                <Bounds x="-140.0" y="253.0" width="138.0" height="141.0"/>
+            </shape>
+            <shape elementRef="_144652407012170" id="_144652407012170_gui">
+                <Bounds x="38.0" y="566.0" width="128.0" height="181.0"/>
+            </shape>
+            <shape elementRef="_144652407013277" id="_144652407013277_gui">
+                <Bounds x="662.0" y="12.0" width="154.0" height="241.0"/>
+            </shape>
+            <shape elementRef="_144652407014387" id="_144652407014387_gui">
+                <Bounds x="479.0" y="12.0" width="158.0" height="221.0"/>
+            </shape>
+            <shape elementRef="_144652407015796" id="_144652407015796_gui">
+                <Bounds x="190.0" y="68.0" width="198.0" height="108.0"/>
+            </shape>
+            <shape elementRef="_1446524070166100" id="_1446524070166100_gui">
+                <Bounds x="463.0" y="302.0" width="143.0" height="181.0"/>
+            </shape>
+            <shape elementRef="_1446524070175107" id="_1446524070175107_gui">
+                <Bounds x="1046.0" y="15.0" width="128.0" height="161.0"/>
+            </shape>
+            <shape elementRef="_1446524070187113" id="_1446524070187113_gui">
+                <Bounds x="190.0" y="282.0" width="146.0" height="321.0"/>
+            </shape>
+            <shape elementRef="_1446524070202127" id="_1446524070202127_gui">
+                <Bounds x="1189.0" y="302.0" width="149.0" height="181.0"/>
+            </shape>
+            <shape elementRef="_1446524070253134" id="_1446524070253134_gui">
+                <Bounds x="840.0" y="12.0" width="140.0" height="241.0"/>
+            </shape>
+        </plane>
+    </jpa:diagram>
+</jpa:entity-mappings>
