@@ -35,6 +35,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.37</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.primefaces.extensions</groupId>
@@ -44,7 +45,7 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
+            <version>6.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

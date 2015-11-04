@@ -1,4 +1,4 @@
-package com.ricardo.bean;
+package com.ricardo.bean.administrador;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -6,7 +6,6 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class UsuarioBean {
     public UsuarioBean() {
-        
     }
     
 }

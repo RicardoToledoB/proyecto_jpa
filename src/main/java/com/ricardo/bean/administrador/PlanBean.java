@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ricardo.bean;
+package com.ricardo.bean.administrador;
 
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
-import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author ricardo
  */
-@Named(value = "planBean")
+@ManagedBean
 @SessionScoped
-public class PlanBean implements Serializable {
+public class PlanBean {
 
     /**
      * Creates a new instance of PlanBean

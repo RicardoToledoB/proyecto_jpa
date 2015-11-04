@@ -1,11 +1,10 @@
-package com.ricardo.bean;
-
+package com.ricardo.bean.ejecutivo;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
-public class RolBean {
-    public RolBean() {
+public class SolicitudBean {
+    public SolicitudBean() {
     }
     
 }

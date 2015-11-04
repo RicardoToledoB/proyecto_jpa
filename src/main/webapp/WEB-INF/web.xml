@@ -30,5 +30,50 @@
         <param-name>primefaces.FONT_AWESOME</param-name>
         <param-value>true</param-value>
     </context-param>
+    <!-- CONFIGURACION LOGIN REALM -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name/>
+        <!--REALM SIN NOMBRE, YA QUE ASI LO MANEJA TOMEE-->
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <!-- PASO PAGINA DE ERROR -->
+            <form-error-page>/error.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    <!-- DEFINIR ROLES -->
+     <security-role>
+        <description>ADMINSTRADOR DE LA PAGINA</description>
+        <role-name>ADMINSTRADOR</role-name>         
+    </security-role>
+    <security-role>
+        <description>EJECUTIVO DE LA PAGINA</description>
+        <role-name>EJECUTIVO</role-name>         
+    </security-role>
+    <!-- CARPETAS -->
+     <security-constraint>
+        <display-name>ADMIN_CONSTRAINT</display-name>
+        <web-resource-collection>
+            <web-resource-name>PRIVATE_CONTENT_CONSTRAINT</web-resource-name>
+            <url-pattern>/administrador/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>ADMINSTRADOR</role-name>
+        </auth-constraint>
+    </security-constraint>
+      <security-constraint>
+        <display-name>EJECUTIVO_CONSTRAINT</display-name>
+        <web-resource-collection>
+            <web-resource-name>PRIVATE_CONTENT_CONSTRAINT</web-resource-name>
+            <url-pattern>/ejecutivo/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>EJECUTIVO</role-name>
+        </auth-constraint>
+    </security-constraint>
+    
     
 </web-app>
